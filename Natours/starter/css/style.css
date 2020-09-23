@@ -46,6 +46,11 @@ body {
     height: 35px;
 }
 
+.logo-box:hover .logo{
+    /* can reuse keyframe animations */
+    animation: moveInRight 0.6s ease-in;
+}
+
 .text-box {
     position: absolute;
     top: 40%;
@@ -56,7 +61,8 @@ body {
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
-
+    /* determine is back part of element is visible or hidden for the user */
+    backface-visibility: hidden;
 }
 
 .heading-primary-main {
@@ -64,6 +70,16 @@ body {
     font-size: 60px;
     font-weight: 700;
     letter-spacing: 35px;
+
+    /* giving animation names allows keyframes to know which part is animated */
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    /* animation happens 3 times */
+    /* animation-iteration-count: 3; */
+
+    /* waits 3 seconds before beginning animation */
+    /* animation-delay: 3s; */
 }
 
 .heading-primary-sub {
@@ -71,4 +87,41 @@ body {
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 17.4px;
+
+    /* short-hand way of writing */
+    animation: moveInRight 2s ease-out;
+    /* animation-name: moveInRight;
+    animation-duration: 2s; */
+}
+
+@keyframes moveInLeft {
+    /* when animation begins */
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    /* when animation is 80% done */
+    80% {
+        transform: translateX(10px);
+    }
+    /* when animation is done */
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    /* when animation begins */
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    /* when animation is 80% done */
+    80% {
+        transform: translateX(-10px);
+    }
+    /* when animation is done */
+    100% {
+        transform: translateX(0);
+    }
 }
